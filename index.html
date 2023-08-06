@@ -50,20 +50,20 @@
 </div>
 </head>
 <body>
+  <iframe src="https://www.google.com/" title="Embedded Page Title" width=”” height=””></iframe>
   <script>
+ 
+    //const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxmpr9PrhxFm-BDq7RZ1X6ytsxBC-m72oMHNnaJlEJ33Sm1MQsPZtcgItdbsIhMYSgYdA/exec";
     const AS_URL_BASE = "https://www.google.com/";
-    
-    var url = document.location.href;
-    var k = url.substr(url.lastIndexOf("k=")+2);
-    
-    if(k){
-          const AS_URL_BASE = "https://www.google.com/";
     fetch(AS_URL_BASE)
+    
     var url = document.location.href;
+    console.log(url);
     var k = url.substr(url.lastIndexOf("k=")+2);
+    console.log(k);
     
     if(k){
-      fetch(AS_URL_BASE)
+      fetch(AS_URL_BASE+'?k='+k)
       .then(r => r.text())
       .then((r) => {
         console.log(r);
@@ -72,17 +72,7 @@
           document.location.replace(r);
         }
       })
-      .catch(err => console.log("error:"+ err))
-    }
-      .then(r => r.text())
-      .then((r) => {
-        console.log(r);
-        //document.write(r);
-        if(r){
-          document.location.replace(r);
-        }
-      })
-      .catch(err => console.log("error:"+ err))
+      .catch(err => console.log(err))
     }
 
   </script>
